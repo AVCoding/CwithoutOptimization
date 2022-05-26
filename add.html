@@ -15,7 +15,7 @@
     <button id="filterButton">Wasm</button>
     
 
-    <script type='text/javascript'> 
+  <script type="text/javascript"> 
          var statusElement = document.getElementById('status');
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
@@ -42,7 +42,8 @@
           
             imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
-            console.time('Function #1');
+            for (let index = 0; index < 20; index++) {
+              console.time('Function #1');
 //             const myArray = new Uint8Array(imageData.data);
             const myArray = imageData.data;
             const buffer = _malloc(myArray.length);
@@ -55,6 +56,10 @@
             context.putImageData(imageData, 0, 0);
             _free(buffer);
             console.timeEnd('Function #1')
+
+        
+              
+            }
 
            
 
