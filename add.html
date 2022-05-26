@@ -41,28 +41,20 @@
             context.drawImage(image, 0, 0);
           
             imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-           // for (let index = 0; index < 20; index++) {
               console.time('Function #1');
 // //             const myArray = new Uint8Array(imageData.data);
             const myArray = imageData.data;
             const buffer = _malloc(myArray.length);
 //             Module.HEAPU8.set(myArray, buffer);
 
-            var result = ccall('grayScale', null, ['number', 'number'], [buffer, myArray.length]);
-        console.log(result);
+            ccall('grayScale', null, ['number', 'number'], [buffer, myArray.length]);
 
-//             //console.log(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
-//             imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
-//             context.putImageData(imageData, 0, 0);
-//             _free(buffer);
+
+            //console.log(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+            imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+            context.putImageData(imageData, 0, 0);
+            _free(buffer);
             console.timeEnd('Function #1')
-
-        
-              
-           // }
-
-           
 
       }
 
