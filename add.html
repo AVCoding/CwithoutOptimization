@@ -20,27 +20,30 @@
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
 
-      //var Module = {};
+      // var Module = {};
 
+         
+      
               var Module = {
                  onRuntimeInitialized: function() {
-                       var filterButton = document.getElementById('filterButton');
-                        let canvas;
-                        let context;
-                        let image = document.getElementById('SourceImage');
-                        canvas = document.getElementById('Canvas');
-                        context = canvas.getContext('2d');
-                        canvas.width = image.width;
-                        canvas.height = image.height;
-                        context.drawImage(image, 0, 0);
-                        let imageData;
-                        imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    
+                   var filterButton = document.getElementById('filterButton');
+                    let canvas;
+                    let context;
+                    let image = document.getElementById('SourceImage');
+                    canvas = document.getElementById('Canvas');
+                    context = canvas.getContext('2d');
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    context.drawImage(image, 0, 0);
+                    let imageData;
+                    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
                           
 
 //                        filterButton.addEventListener('click', function () {
                    
-                          window.onload = function(){
+                        
                             
                                var res;
                                // console.time('Function #1');
@@ -57,7 +60,7 @@
                               // console.timeEnd('Function #1') 
                          
                           
-                          }
+
            
                      
 //                         });
