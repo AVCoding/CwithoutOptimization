@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Emscripten-Generated Code</title>
+  
+  </head>
+  <body>
+
+    
+    <img id="SourceImage" src="city.jpg" crossorigin="Anonymous">
+    <canvas id="Canvas"></canvas>
+    <button id="filterButton">Wasm</button>
+    
+
+    <script type='text/javascript'> 
+      
+      var statusElement = document.getElementById('status');
+      var progressElement = document.getElementById('progress');
+      var spinnerElement = document.getElementById('spinner');
+
+      //var Module = {};
+
+              var Module = {
+                 onRuntimeInitialized: function() {
+                       var filterButton = document.getElementById('filterButton');
+                        let canvas;
+                        let context;
+                        let image = document.getElementById('SourceImage');
+                        canvas = document.getElementById('Canvas');
+                        context = canvas.getContext('2d');
+                        canvas.width = image.width;
+                        canvas.height = image.height;
+                        context.drawImage(image, 0, 0);
+                        let imageData;
+                        imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+
+                       filterButton.addEventListener('click', function () {
+
+                          var res  = myFunction(imageData); 
+                         context.putImageData(res, 0, 0);
+                        });
+
+
+                  }
+              };
+        
+            function myFunction(imageData){
+                    for(var i=0; i<20; i++){
+                      //debugger
+                      console.time('Function #1');
+                      const myArray = new Uint8Array(imageData.data);
+                      const buffer = _malloc(myArray.length);
+                      Module.HEAPU8.set(myArray, buffer);
+                      ccall('grayScale', null, ['number', 'number'], [buffer, myArray.length]);
+                      // console.log(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+                      //var res = Module.HEAPU8.subarray(buffer, buffer+myArray.length);
+                      imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+                      //context.putImageData(imageData, 0, 0);
+                     _free(buffer);
+                      console.timeEnd('Function #1')
+                    }
+                return imageData;
+             }
+
+    </script>
+    
+    
+
+    
+    <script async type="text/javascript" src="add.js"></script>
+  </body>
+</html>
+
+
