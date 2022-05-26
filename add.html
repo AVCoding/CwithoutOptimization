@@ -34,7 +34,7 @@
           let image = document.getElementById('SourceImage');
           canvas = document.getElementById('Canvas');
           var imageData;
-         image.onload = function(){
+
             context = canvas.getContext('2d');
             canvas.width = image.width;
             canvas.height = image.height;
@@ -54,8 +54,7 @@
             context.putImageData(imageData, 0, 0);
             _free(buffer);
             console.timeEnd('Function #1')
-           
-         } 
+
            
 
       }
