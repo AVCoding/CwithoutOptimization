@@ -40,9 +40,8 @@
           let imageData;
           imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       
-        
+        console.time('Function #1');
         const myArray = new Uint8Array(imageData.data);
-
         const buffer = _malloc(myArray.length);
         Module.HEAPU8.set(myArray, buffer);
 
@@ -53,6 +52,7 @@
         imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
         context.putImageData(imageData, 0, 0);
         _free(buffer);
+        console.timeEnd('Function #1')
 
       }
 
