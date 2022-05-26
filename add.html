@@ -36,22 +36,29 @@
                         let imageData;
                         imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
+                          
 
 //                        filterButton.addEventListener('click', function () {
-                          var res;
-                           // console.time('Function #1');
-                   debugger
-                          const myArray = new Uint8Array(imageData.data);
-                          const buffer = _malloc(myArray.length);
-                          Module.HEAPU8.set(myArray, buffer);
-                          ccall('grayScale', null, ['number', 'number'], [buffer, myArray.length]);
-                           console.log(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
-                          //res = Module.HEAPU8.subarray(buffer, buffer+myArray.length);
-                          //imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
-                          //context.putImageData(imageData, 0, 0);
-                         _free(buffer);
-                          // console.timeEnd('Function #1') 
+                   
+                          window.onload = function(){
+                            
+                               var res;
+                               // console.time('Function #1');
+                              debugger
+                              const myArray = new Uint8Array(imageData.data);
+                              const buffer = _malloc(myArray.length);
+                              Module.HEAPU8.set(myArray, buffer);
+                              ccall('grayScale', null, ['number', 'number'], [buffer, myArray.length]);
+                               console.log(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+                              //res = Module.HEAPU8.subarray(buffer, buffer+myArray.length);
+                              //imageData.data.set(Module.HEAPU8.subarray(buffer, buffer+myArray.length));
+                              //context.putImageData(imageData, 0, 0);
+                             _free(buffer);
+                              // console.timeEnd('Function #1') 
                          
+                          
+                          }
+           
                      
 //                         });
 
