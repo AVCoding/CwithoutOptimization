@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Emscripten-Generated Code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
   </head>
   <body>
@@ -19,12 +20,14 @@
       var statusElement = document.getElementById('status');
       var progressElement = document.getElementById('progress');
       var spinnerElement = document.getElementById('spinner');
+      
+      $(document).ready(function(){alert('jquery ready');});
 
       // var Module = {};
       
       
 
-         window.onload = function(){
+  
       
               var Module = {
                  onRuntimeInitialized: function() {
@@ -43,7 +46,7 @@
 
                     
               
-                          
+                   image.onload = function(){ 
 
 //                        filterButton.addEventListener('click', function () {
                    
