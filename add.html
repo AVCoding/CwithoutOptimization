@@ -22,24 +22,24 @@
       var spinnerElement = document.getElementById('spinner');
       
       
-     var filterButton = document.getElementById('filterButton');
-      let canvas;
-      let context;
-      let image = document.getElementById('SourceImage');
-      canvas = document.getElementById('Canvas');
-      context = canvas.getContext('2d');
-      canvas.width = image.width;
-      canvas.height = image.height;
-      context.drawImage(image, 0, 0);
-      let imageData;
-      imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
       
       $(document).ready(function(){
         alert('jquery ready');
      
 
       // var Module = {};
-      
+           var filterButton = document.getElementById('filterButton');
+          let canvas;
+          let context;
+          let image = document.getElementById('SourceImage');
+          canvas = document.getElementById('Canvas');
+          context = canvas.getContext('2d');
+          canvas.width = image.width;
+          canvas.height = image.height;
+          context.drawImage(image, 0, 0);
+          let imageData;
+          imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       
 
   
